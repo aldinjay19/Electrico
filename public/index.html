@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electrico – Sibuyan Blackout Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="#top">Electrico</a>
+      <ul>
+        <li><a href="#pattern">Pattern</a></li>
+        <li><a href="#report">Report</a></li>
+        <li><a href="#recent">Recent</a></li>
+        <li><a href="#official">Official</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <h1>Know when the lights go out in Sibuyan.</h1>
+      <p>Report every blackout in a minute. Electrico turns the reports into the hours and days when outages happen most.</p>
+      <a class="btn" href="#report">Report an outage</a>
+      <div class="now">
+        <strong id="nowHead">No reports yet</strong>
+        <span id="nowSub"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="pattern">
+      <h2>When outages happen</h2>
+      <p class="sub">This is an estimate from reports. It shows patterns, not a guaranteed forecast.</p>
+      <div class="two">
+        <div class="panel">
+          <h3>By hour of day</h3>
+          <div class="chart" id="hoursChart"></div>
+          <div class="axis"><span>12 AM</span><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>11 PM</span></div>
+        </div>
+        <div class="panel">
+          <h3>By day of week</h3>
+          <div class="chart" id="daysChart"></div>
+          <div class="axis"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+          <p class="note" id="avg"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="report">
+      <h2>Report an outage</h2>
+      <p class="sub">Report when the power went out, even if it is back now.</p>
+      <form class="panel" id="reportForm">
+        <label>Municipality
+          <select id="muni" required>
+            <option>San Fernando</option>
+            <option>Cajidiocan</option>
+            <option>Magdiwang</option>
+          </select>
+        </label>
+        <label>Barangay
+          <input id="brgy" maxlength="40" placeholder="Barangay name" required>
+        </label>
+        <div class="row2">
+          <label>Power went out at
+            <input id="start" type="datetime-local" required>
+          </label>
+          <label>How long (minutes)
+            <input id="mins" type="number" min="1" max="2880" placeholder="Optional">
+          </label>
+        </div>
+        <div class="actions">
+          <button class="btn" id="submitBtn" type="submit">Submit report</button>
+          <button class="btn-ghost" id="cancelBtn" type="button" hidden>Cancel edit</button>
+        </div>
+        <p class="msg" id="msg" role="status"></p>
+      </form>
+    </section>
+
+    <section id="recent">
+      <h2>Recent reports</h2>
+      <div class="panel">
+        <label>Filter by municipality
+          <select id="filter">
+            <option value="all">All municipalities</option>
+            <option>San Fernando</option>
+            <option>Cajidiocan</option>
+            <option>Magdiwang</option>
+          </select>
+        </label>
+        <ul class="list" id="list"></ul>
+      </div>
+    </section>
+
+    <section id="official">
+      <h2>Official announcements</h2>
+      <div class="panel">
+        <p>Romblon Electric Cooperative (ROMELCO) posts brownout advisories for the island.</p>
+        <a class="btn" href="https://romelcoinc.com" target="_blank" rel="noopener">Open ROMELCO</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">Electrico is a student project and is not affiliated with ROMELCO or NGCP.</footer>
+  <script src="script.js"></script>
+</body>
+</html>
